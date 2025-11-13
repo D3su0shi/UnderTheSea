@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a2550231773e84540aa5fac712d76815
+guid: 4e51756111a89fa448fc4739b6767b09
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6595579882821830383
-    second: foreground-2_0
+      213: 6422769357037688683
+    second: rock0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: foreground-2_0
+      name: rock0_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 101
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe6ce4365f4388b50800000000000000
-      internalID: 6595579882821830383
+      spriteID: b67de7073b2422950800000000000000
+      internalID: 6422769357037688683
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      foreground-2_0: 6595579882821830383
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
