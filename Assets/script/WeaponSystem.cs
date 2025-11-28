@@ -6,12 +6,11 @@ public class WeaponSystem : MonoBehaviour
     [SerializeField] private float attackRange = 10f; //how far the weapon can reach
     [SerializeField] private float coolDownDuration = 2f; //time between attacks
     private bool isCoolingDown = false; //flag to check if weapon is cooling down
-    private float coolDownTimer; //timer to track cooldown time
+  
    // public GameUI gameUI; 
     public subScript ship; // Reference to the ship's script
     private Collider2D[] hitBuffer = new Collider2D[5]; //buffer to store hit results, we can hit up to 5 targets at once
     [SerializeField] private LayerMask enemyLayer; //layer mask to filter for enemy targets
-    private float coolDownStartTime; //time when cooldown started
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,6 +27,9 @@ public class WeaponSystem : MonoBehaviour
             // calculate elapsed time since cooldown started
             // calculate remaining time
             // update UI
+
+            float progress = TimerSystem.Instance.GetProgress("weaponCooldown", coolDownDuration);
+            Debug.Log($"Recharging... {progress * 100}%");
         }
         else
         {
@@ -60,10 +62,13 @@ public class WeaponSystem : MonoBehaviour
         }
 
         isCoolingDown = true; //start cooldown
-        coolDownStartTime = Time.time; //record the time when cooldown started
-
-        //scheduling the end of cooldown
-        // to do: make timer system script to handle this
+       
+       TimerSystem.Instance.AddTimer("weaponCooldown", coolDownDuration, ResetCooldown);
         
+    }
+    private void ResetCooldown()
+    {
+        isCoolingDown = false;
+        Debug.Log("Weapon ready to fire again!");
     }
 }
