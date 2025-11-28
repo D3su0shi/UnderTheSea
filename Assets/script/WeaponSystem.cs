@@ -35,7 +35,7 @@ public class WeaponSystem : MonoBehaviour
         }
     }
 
-    void Attack()
+    public void Attack()
     {
         if (isCoolingDown) // if weapon is cooling down, do not attack
             return;
