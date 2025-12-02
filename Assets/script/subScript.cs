@@ -18,7 +18,7 @@ public class subScript : MonoBehaviour
 
     // references
     private Rigidbody2D rb;
-    public WeaponSystem weaponSystem;
+    public WeaponSystem lightningPulse;
 
 
     void Start()
@@ -32,6 +32,8 @@ public class subScript : MonoBehaviour
 
         // Initialize oxygen
         currentOxygen = maxOxygen;
+        lightningPulse = GetComponent<WeaponSystem>();
+
     }
 
     void Update()
@@ -40,9 +42,9 @@ public class subScript : MonoBehaviour
         // firing weapons (spacebar)  
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (weaponSystem != null)
+            if (lightningPulse != null)
             {
-                weaponSystem.Attack();
+                lightningPulse.Attack();
             }
         }
 
