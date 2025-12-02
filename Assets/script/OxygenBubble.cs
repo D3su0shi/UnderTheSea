@@ -2,41 +2,50 @@ using UnityEngine;
 
 public class OxygenBubble : MonoBehaviour
 {
-    [SerializeField]  private float dockingZoneRadius; //circular radius the ship must enter to collect oxygen
-    [SerializeField] private float refillTimeDuration; //time taken to refill oxygen
-    [SerializeField] private bool isRefilling = false; //flag to check if refilling is in progress
-    //public GameUI gameUI; //reference to game UI
-    public subScript ship; //reference to the ship
-   
-   private string timerID; //unique ID for this instance's timer
+    [SerializeField] private float dockingZoneRadius = 3f; // Visual radius of the zone
+    [SerializeField] private float refillTimeDuration = 3f; // Time to wait before refilling
+
+    // Internal state
+    private bool isRefilling = false;
+    private string timerID;
+
+    private subScript ship;
+
     void Start()
     {
+        // Generate a unique ID for this specific bubble so timers don't clash
         timerID = "OxygenBubbleRefill_" + gameObject.GetInstanceID();
+
+        // AUTOMATICALLY find the ship. No manual dragging needed!
+        ship = FindFirstObjectByType<subScript>();
+
+        if (ship == null)
+        {
+            Debug.LogError("OxygenBubble: Could not find the 'subScript' in the scene! Make sure the Submarine is active.");
+        }
     }
 
-   
     void Update()
     {
-       if (ship == null) return; // if ship reference is missing, exit
+        if (ship == null) return;
 
-       float distanceToShip = Vector2.Distance(transform.position, ship.transform.position); // calculate distance to ship
+        // Calculate distance
+        float distanceToShip = Vector2.Distance(transform.position, ship.transform.position);
 
-       bool canRefill = (distanceToShip <= dockingZoneRadius && ship.isStationary()); // check if ship is in docking zone and stationary
+        // Check conditions: Inside radius AND Ship is not moving
+        bool canRefill = (distanceToShip <= dockingZoneRadius && ship.isStationary());
 
-       if (canRefill)
+        if (canRefill)
         {
-            if (!isRefilling) // start refilling if not already in progress
+            if (!isRefilling)
             {
                 StartRefill();
             }
-
-            float refillProgress = TimerSystem.Instance.GetProgress(timerID, refillTimeDuration); // get refill progress from timer system
-            // to do: update UI
-
         }
         else
         {
-            if (isRefilling) // cancel refilling if ship leaves docking zone or starts moving
+            // If the ship moves or leaves the circle, cancel immediately
+            if (isRefilling)
             {
                 CancelRefill();
             }
@@ -46,25 +55,39 @@ public class OxygenBubble : MonoBehaviour
     private void StartRefill()
     {
         isRefilling = true;
-        TimerSystem.Instance.AddTimer(timerID, refillTimeDuration, CompleteRefill); // start timer for refill
 
-        Debug.Log("Oxygen refill started.");
+        if (TimerSystem.Instance != null)
+        {
+            TimerSystem.Instance.AddTimer(timerID, refillTimeDuration, CompleteRefill);
+            Debug.Log("Entered Oxygen Bubble. Refilling in " + refillTimeDuration + " seconds...");
+        }
     }
 
     private void CancelRefill()
     {
         isRefilling = false;
-        TimerSystem.Instance.CancelTimer(timerID); // ensure timer is cancelled
-       
-        Debug.Log("Moved out of zone, refill cancelled.");
+
+        if (TimerSystem.Instance != null)
+        {
+            TimerSystem.Instance.CancelTimer(timerID);
+        }
+
+        Debug.Log("Left Oxygen Bubble / Moved. Refill Cancelled.");
     }
 
     private void CompleteRefill()
     {
         isRefilling = false;
-        ship.RefillOxygen(); // refill ship's oxygen
-
-        Debug.Log("Oxygen refill complete.");
+        if (ship != null)
+        {
+            ship.RefillOxygen();
+            Debug.Log("Oxygen Refilled!");
+        }
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0, 1, 0, 0.3f); // Semi-transparent green
+        Gizmos.DrawWireSphere(transform.position, dockingZoneRadius);
+    }
 }

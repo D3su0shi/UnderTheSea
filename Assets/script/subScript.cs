@@ -12,9 +12,9 @@ public class subScript : MonoBehaviour
     [SerializeField] private Vector2 velocity;
 
     // oxygen stats
-    private float maxOxygen = 100f;
+    [SerializeField] private float maxOxygen = 100f;
     [SerializeField] private float currentOxygen;
-    [SerializeField] private float oxygenDepletionRate = 5f; 
+    [SerializeField] private float oxygenDepletionRate = 0.5f; 
 
     // references
     private Rigidbody2D rb;
