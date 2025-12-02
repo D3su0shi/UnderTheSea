@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
 {
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
 
     [SerializeField] private float attackRange = 10f; //how far the weapon can reach
     [SerializeField] private float coolDownDuration = 2f; //time between attacks
@@ -46,26 +48,47 @@ public class WeaponSystem : MonoBehaviour
         ContactFilter2D filter = new ContactFilter2D();
         filter.SetLayerMask(enemyLayer); //set filter to only detect enemies
 
-        int hitCount = Physics2D.OverlapCircle(ship.transform.position,attackRange, filter, hitBuffer); //check for targets in range
 
-        for (int i = 0; i < hitCount; i++)
+        if (projectilePrefab != null && firePoint != null)
         {
-            Collider2D hit = hitBuffer[i];
+            // 1. Instantiate the projectile at the fire point with the sub's rotation
+            GameObject newPulse = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-            //uncomment when HostileFish script is ready
-            
-            /*if (hit != null && hit.TryGetComponent<HostileFish>(out HostileFish fish)) //check if hit object is a hostile fish
+            // 2. Get the script on the newly spawned object
+            ProjectileBehavior pScript = newPulse.GetComponent<ProjectileBehavior>();
+
+            // 3. Set the range (Lifetime)
+            if (pScript != null)
             {
-                fish.takeHit(); //apply damage to the hostile fish
+                pScript.SetRange(attackRange);
             }
-            */
+        }
+        else
+        {
+            Debug.LogWarning("WeaponSystem: Projectile Prefab or FirePoint is missing!");
         }
 
-        isCoolingDown = true; //start cooldown
-       
-       TimerSystem.Instance.AddTimer("weaponCooldown", coolDownDuration, ResetCooldown);
-        
+        // 4. Start Cooldown
+        StartCooldown();
     }
+
+
+    private void StartCooldown()
+    {
+        isCoolingDown = true;
+
+        // Use your custom TimerSystem if it exists
+        if (TimerSystem.Instance != null)
+        {
+            TimerSystem.Instance.AddTimer("weaponCooldown", coolDownDuration, ResetCooldown);
+        }
+        else
+        {
+            // Fallback: Use standard Unity Invoke if TimerSystem is missing
+            Invoke(nameof(ResetCooldown), coolDownDuration);
+        }
+    }
+
     private void ResetCooldown()
     {
         isCoolingDown = false;

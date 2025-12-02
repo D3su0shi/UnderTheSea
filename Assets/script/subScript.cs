@@ -12,13 +12,13 @@ public class subScript : MonoBehaviour
     [SerializeField] private Vector2 velocity;
 
     // oxygen stats
-    [SerializeField] private float maxOxygen = 100f;
+    private float maxOxygen = 100f;
     [SerializeField] private float currentOxygen;
     [SerializeField] private float oxygenDepletionRate = 5f; 
 
     // references
     private Rigidbody2D rb;
-    public WeaponSystem weaponSystem;
+    public WeaponSystem lightningPulse;
 
 
     void Start()
@@ -32,6 +32,8 @@ public class subScript : MonoBehaviour
 
         // Initialize oxygen
         currentOxygen = maxOxygen;
+        lightningPulse = GetComponent<WeaponSystem>();
+
     }
 
     void Update()
@@ -40,9 +42,9 @@ public class subScript : MonoBehaviour
         // firing weapons (spacebar)  
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (weaponSystem != null)
+            if (lightningPulse != null)
             {
-                weaponSystem.Attack();
+                lightningPulse.Attack();
             }
         }
 
