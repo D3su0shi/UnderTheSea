@@ -17,18 +17,23 @@ public class ProjectileBehavior : MonoBehaviour
     public void SetRange(float range)
     {
         float calculatedLifeTime = range / speed;
-
-        // Destroy the projectile after that calculated time
         Destroy(gameObject, calculatedLifeTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("sub"))
+        if (other.CompareTag("sub"))
         {
-        
-
-            Destroy(gameObject); // Destroy pulse on impact
+            return;
         }
+
+        HostileFish enemy = other.GetComponent<HostileFish>();
+
+        if (enemy != null)
+        {
+            enemy.TakeHit(); // Apply damage/stun
+        }
+
+        Destroy(gameObject);
     }
 }

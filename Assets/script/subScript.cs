@@ -16,6 +16,9 @@ public class subScript : MonoBehaviour
     [SerializeField] private float currentOxygen;
     [SerializeField] private float oxygenDepletionRate = 0.5f;
 
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float currentHealth;
+
     public Image oxygenRingUI;
 
 
@@ -35,6 +38,8 @@ public class subScript : MonoBehaviour
 
         // Initialize oxygen
         currentOxygen = maxOxygen;
+        currentHealth = maxHealth;
+
         lightningPulse = GetComponent<WeaponSystem>();
 
         UpdateOxygenUI();
@@ -134,6 +139,20 @@ public class subScript : MonoBehaviour
         UpdateOxygenUI();
         Debug.Log("Oxygen refilled.");
     }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Debug.Log($"Hull Hit! Health: {currentHealth}/{maxHealth}");
+
+        // Check for Hull Failure
+        if (currentHealth <= 0)
+        {
+            Debug.Log("GAME OVER - HULL DESTROYED");
+            Destroy(gameObject); // Optional: Replace with Game Over screen logic
+        }
+    }
+
 
     // New Helper Function to handle the UI
     private void UpdateOxygenUI()
