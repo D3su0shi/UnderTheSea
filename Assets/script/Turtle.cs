@@ -4,7 +4,7 @@ public class Turtle : MonoBehaviour
 {
     [SerializeField] private float rescueZoneRadius; //circular radius the ship must enter to rescue turtle
     [SerializeField] private float rescueTimeDuration; //time taken to rescue turtle
-    [SerializeField] private int pointsForRescue = 100; //points awarded for rescuing turtle
+    //[SerializeField] private int pointsForRescue = 100; //points awarded for rescuing turtle
 
     [SerializeField] private bool isBeingRescued = false; //flag to check if rescue is in progress
 
