@@ -1,0 +1,16 @@
+{
+    "name": "TestsAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:10fae5d0bb7f7425584cf343c8a4508e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
