@@ -1,0 +1,510 @@
+fileFormatVersion: 2
+guid: 55bffedf2449dbf4f8da446ad08dffe5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7896512911066091115
+    second: The Vaults of Shiva the Destroyer 01 (player, 51 x 51) (1)_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 6
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: The Vaults of Shiva the Destroyer 01 (player, 51 x 51) (1)_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 1042
+        height: 1018
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 307, y: -445}
+        - {x: 307, y: -403}
+        - {x: 350, y: -403}
+        - {x: 350, y: -361}
+        - {x: 392, y: -361}
+        - {x: 392, y: -319}
+        - {x: 434, y: -319}
+        - {x: 435, y: -149}
+        - {x: 519, y: -149}
+        - {x: 519, y: -85}
+        - {x: 477, y: -85}
+        - {x: 477, y: -64}
+        - {x: 519, y: -64}
+        - {x: 518, y: 211}
+        - {x: 434, y: 211}
+        - {x: 434, y: 296}
+        - {x: 392, y: 296}
+        - {x: 392, y: 423}
+        - {x: 223, y: 423}
+        - {x: 223, y: 444}
+        - {x: 265, y: 443}
+        - {x: 265, y: 508}
+        - {x: -222, y: 507}
+        - {x: -222, y: 465}
+        - {x: -265, y: 465}
+        - {x: -263, y: 381}
+        - {x: -285, y: 380}
+        - {x: -286, y: 423}
+        - {x: -350, y: 422}
+        - {x: -349, y: 274}
+        - {x: -308, y: 274}
+        - {x: -306, y: 253}
+        - {x: -392, y: 253}
+        - {x: -391, y: 212}
+        - {x: -476, y: 211}
+        - {x: -476, y: 84}
+        - {x: -519, y: 84}
+        - {x: -519, y: -107}
+        - {x: -477, y: -107}
+        - {x: -476, y: -149}
+        - {x: -434, y: -149}
+        - {x: -434, y: -170}
+        - {x: -476, y: -171}
+        - {x: -476, y: -234}
+        - {x: -392, y: -234}
+        - {x: -392, y: -276}
+        - {x: -307, y: -276}
+        - {x: -307, y: -403}
+        - {x: -265, y: -403}
+        - {x: -265, y: -446}
+        - {x: -201, y: -446}
+        - {x: -201, y: -403}
+        - {x: -53, y: -403}
+        - {x: -53, y: -424}
+        - {x: -180, y: -424}
+        - {x: -180.73145, y: -509}
+        - {x: -159, y: -509}
+        - {x: -158, y: -487}
+        - {x: -32, y: -488}
+        - {x: -32, y: -403}
+        - {x: -11, y: -403}
+        - {x: -11, y: -488}
+        - {x: 223, y: -488}
+        - {x: 223, y: -403}
+        - {x: 243, y: -403}
+        - {x: 243, y: -446}
+      - - {x: 144, y: 338}
+        - {x: 138, y: 338}
+        - {x: 138, y: 474}
+        - {x: 138, y: 480}
+        - {x: 138, y: 486}
+        - {x: 147, y: 486}
+        - {x: 150, y: 486}
+        - {x: 152, y: 486}
+        - {x: 201, y: 486}
+        - {x: 201, y: 436}
+        - {x: 201, y: 433}
+        - {x: 201, y: 430}
+        - {x: 201, y: 423}
+        - {x: 169, y: 423}
+        - {x: 166, y: 423}
+        - {x: 159, y: 423}
+        - {x: 159, y: 423}
+        - {x: 159, y: 338}
+        - {x: 150, y: 338}
+        - {x: 148, y: 338}
+      - - {x: -370, y: 211}
+        - {x: -370, y: 218}
+        - {x: -370, y: 221}
+        - {x: -370, y: 223}
+        - {x: -370, y: 232}
+        - {x: -290, y: 232}
+        - {x: -286, y: 232}
+        - {x: -286, y: 296}
+        - {x: -288, y: 296}
+        - {x: -305, y: 296}
+        - {x: -309, y: 296}
+        - {x: -328, y: 296}
+        - {x: -328, y: 301}
+        - {x: -328, y: 305}
+        - {x: -328, y: 308}
+        - {x: -328, y: 316}
+        - {x: -288, y: 316}
+        - {x: -286, y: 316}
+        - {x: -286, y: 359}
+        - {x: -280, y: 359}
+        - {x: -277, y: 359}
+        - {x: -273, y: 359}
+        - {x: -247, y: 359}
+        - {x: -244, y: 359}
+        - {x: -243, y: 444}
+        - {x: -236, y: 444}
+        - {x: -233, y: 444}
+        - {x: -231, y: 444}
+        - {x: -222, y: 444}
+        - {x: -222, y: 233}
+        - {x: -222, y: 232}
+        - {x: -180, y: 232}
+        - {x: -180, y: 226}
+        - {x: -180, y: 223}
+        - {x: -180, y: 220}
+        - {x: -180, y: 211}
+      - - {x: -158, y: -43}
+        - {x: -158, y: -38}
+        - {x: -159, y: 218}
+        - {x: -159, y: 220}
+        - {x: -159, y: 224}
+        - {x: -159, y: 232}
+        - {x: -11, y: 231}
+        - {x: -11, y: 223}
+        - {x: -11, y: 220}
+        - {x: -11, y: 216}
+        - {x: -11, y: 189}
+        - {x: -8, y: 189}
+        - {x: 138, y: 189}
+        - {x: 138, y: 194}
+        - {x: 138, y: 221}
+        - {x: 138, y: 224}
+        - {x: 138, y: 227}
+        - {x: 138, y: 317}
+        - {x: 147, y: 317}
+        - {x: 150, y: 317}
+        - {x: 158, y: 317}
+        - {x: 158, y: 314}
+        - {x: 159, y: 126}
+        - {x: 150, y: 127}
+        - {x: 147, y: 127}
+        - {x: 144, y: 127}
+        - {x: 138, y: 127}
+        - {x: 138, y: 169}
+        - {x: 135, y: 169}
+        - {x: -95, y: 169}
+        - {x: -95, y: 167}
+        - {x: -96, y: 84}
+        - {x: -105, y: 84}
+        - {x: -107, y: 84}
+        - {x: -112, y: 84}
+        - {x: -138, y: 84}
+        - {x: -138, y: 82}
+        - {x: -138, y: -43}
+        - {x: -147, y: -43}
+        - {x: -150, y: -43}
+      - - {x: 400, y: 256}
+        - {x: 394, y: 256}
+        - {x: 394, y: 272}
+        - {x: 398, y: 272}
+        - {x: 400, y: 271}
+        - {x: 402, y: 273}
+        - {x: 404, y: 272}
+        - {x: 410, y: 272}
+        - {x: 410, y: 256}
+        - {x: 404, y: 256}
+        - {x: 402, y: 254}
+      - - {x: 138, y: -43}
+        - {x: 138, y: -39}
+        - {x: 138, y: -35}
+        - {x: 138, y: -32}
+        - {x: 138, y: -29}
+        - {x: 138, y: -26}
+        - {x: 138, y: 105}
+        - {x: 159, y: 105}
+        - {x: 159, y: 63}
+        - {x: 163, y: 63}
+        - {x: 392, y: 63}
+        - {x: 392, y: 64}
+        - {x: 392, y: 231}
+        - {x: 400, y: 231}
+        - {x: 404, y: 231}
+        - {x: 408, y: 231}
+        - {x: 412, y: 230}
+        - {x: 412, y: 105}
+        - {x: 417, y: 105}
+        - {x: 455, y: 105}
+        - {x: 455, y: 95}
+        - {x: 455, y: 93}
+        - {x: 455, y: 90}
+        - {x: 455, y: -1}
+        - {x: 446, y: -1}
+        - {x: 443, y: -1}
+        - {x: 434, y: -1}
+        - {x: 434, y: 3}
+        - {x: 434, y: 42}
+        - {x: 431, y: 42}
+        - {x: 168, y: 42}
+        - {x: 165, y: 42}
+        - {x: 162, y: 42}
+        - {x: 160, y: 42}
+        - {x: 158, y: 42}
+        - {x: 158, y: 40}
+        - {x: 158, y: -43}
+        - {x: 150, y: -43}
+        - {x: 147, y: -43}
+      - - {x: 11, y: 211}
+        - {x: 11, y: 232}
+        - {x: 116, y: 232}
+        - {x: 116, y: 211}
+      - - {x: 477, y: 84}
+        - {x: 477, y: 93}
+        - {x: 477, y: 97}
+        - {x: 477, y: 100}
+        - {x: 477, y: 189}
+        - {x: 484, y: 189}
+        - {x: 487, y: 189}
+        - {x: 490, y: 189}
+        - {x: 497, y: 189}
+        - {x: 497, y: 84}
+      - - {x: -486, y: -85}
+        - {x: -497, y: -85}
+        - {x: -497, y: 62}
+        - {x: -487, y: 62}
+        - {x: -477, y: 62}
+        - {x: -476, y: -85}
+      - - {x: -370, y: -255}
+        - {x: -370, y: -170}
+        - {x: -370, y: -170}
+        - {x: -413, y: -170}
+        - {x: -413, y: -149}
+        - {x: -159, y: -149}
+        - {x: -159, y: -64}
+        - {x: -116, y: -64}
+        - {x: -116, y: 25}
+        - {x: -116, y: 29}
+        - {x: -116, y: 32}
+        - {x: -116, y: 35}
+        - {x: -116, y: 41}
+        - {x: -116, y: 42}
+        - {x: -116, y: 63}
+        - {x: -108, y: 63}
+        - {x: -105, y: 63}
+        - {x: -103, y: 63}
+        - {x: -95, y: 63}
+        - {x: -95, y: -107}
+        - {x: -95, y: -107}
+        - {x: 116, y: -106}
+        - {x: 116, y: -115}
+        - {x: 116, y: -117}
+        - {x: 116, y: -119}
+        - {x: 116, y: -128}
+        - {x: 75, y: -127}
+        - {x: 75, y: -126}
+        - {x: 73, y: -169}
+        - {x: 73, y: -169}
+        - {x: 73, y: -170}
+        - {x: 73, y: -170}
+        - {x: -307, y: -170}
+        - {x: -307, y: -169}
+        - {x: -307, y: -255}
+      - - {x: 442, y: -128}
+        - {x: 434, y: -128}
+        - {x: 434, y: -22}
+        - {x: 455, y: -22}
+        - {x: 455, y: -26}
+        - {x: 455, y: -73}
+        - {x: 455, y: -76}
+        - {x: 455, y: -78}
+        - {x: 455, y: -128}
+        - {x: 446, y: -128}
+      - - {x: 138, y: -127}
+        - {x: 138, y: -65}
+        - {x: 158, y: -65}
+        - {x: 158, y: -127}
+        - {x: 149, y: -127}
+      - - {x: 53, y: -339}
+        - {x: 53, y: -191}
+        - {x: 138, y: -191}
+        - {x: 138, y: -149}
+        - {x: 159, y: -149}
+        - {x: 159, y: -212}
+        - {x: 74, y: -212}
+        - {x: 74, y: -242}
+        - {x: 74, y: -339}
+      - - {x: 265, y: -424}
+        - {x: 265, y: -415}
+        - {x: 265, y: -412}
+        - {x: 265, y: -408}
+        - {x: 265, y: -404}
+        - {x: 265, y: -402}
+        - {x: 265, y: -397}
+        - {x: 265, y: -394}
+        - {x: 265, y: -340}
+        - {x: 265, y: -339}
+        - {x: 263, y: -339}
+        - {x: 260, y: -339}
+        - {x: 255, y: -339}
+        - {x: 158, y: -339}
+        - {x: 158, y: -341}
+        - {x: 158, y: -381}
+        - {x: 150, y: -381}
+        - {x: 148, y: -381}
+        - {x: 144, y: -381}
+        - {x: 138, y: -381}
+        - {x: 138, y: -371}
+        - {x: 138, y: -367}
+        - {x: 138, y: -353}
+        - {x: 138, y: -352}
+        - {x: 138, y: -342}
+        - {x: 138, y: -339}
+        - {x: 138, y: -334}
+        - {x: 138, y: -331}
+        - {x: 138, y: -318}
+        - {x: 138, y: -315}
+        - {x: 138, y: -313}
+        - {x: 138, y: -311}
+        - {x: 138, y: -255}
+        - {x: 96, y: -255}
+        - {x: 96, y: -234}
+        - {x: 158, y: -234}
+        - {x: 158, y: -319}
+        - {x: 285, y: -319}
+        - {x: 285, y: -424}
+      - - {x: 357, y: -339}
+        - {x: 307, y: -339}
+        - {x: 307, y: -332}
+        - {x: 307, y: -330}
+        - {x: 307, y: -327}
+        - {x: 307, y: -319}
+        - {x: 370, y: -319}
+        - {x: 370, y: -326}
+        - {x: 370, y: -329}
+        - {x: 370, y: -331}
+        - {x: 370, y: -339}
+        - {x: 363, y: -339}
+        - {x: 360, y: -339}
+      - - {x: 180, y: -466}
+        - {x: 180, y: -423}
+        - {x: 116, y: -424}
+        - {x: 116, y: -466}
+        - {x: 96, y: -466}
+        - {x: 96, y: -424}
+        - {x: 11, y: -424}
+        - {x: 12, y: -403}
+        - {x: 53, y: -403}
+        - {x: 53, y: -361}
+        - {x: 74, y: -361}
+        - {x: 74, y: -403}
+        - {x: 201, y: -403}
+        - {x: 201, y: -466}
+      - - {x: -241, y: -421}
+        - {x: -241, y: -415}
+        - {x: -242, y: -413}
+        - {x: -241, y: -412}
+        - {x: -241, y: -406}
+        - {x: -225, y: -406}
+        - {x: -225, y: -412}
+        - {x: -224, y: -414}
+        - {x: -225, y: -415}
+        - {x: -225, y: -421}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6e4164b7ac069d60800000000000000
+      internalID: 7896512911066091115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b40a5cd21c3e04447ad5fddbd4e95029
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      The Vaults of Shiva the Destroyer 01 (player, 51 x 51) (1)_0: 7896512911066091115
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class subScript : MonoBehaviour
 {
@@ -7,14 +8,19 @@ public class subScript : MonoBehaviour
     private float moveSpeed = 7f;        // how fast the sub moves
     private float rotationSpeed = 90f;  // how fast the sub rotates
 
-    // NOTE: linearVelocity is obsolete; use velocity
 
     [SerializeField] private Vector2 velocity;
 
     // oxygen stats
-    [SerializeField] private float maxOxygen = 100f;
+    private float maxOxygen = 100f;
     [SerializeField] private float currentOxygen;
-    [SerializeField] private float oxygenDepletionRate = 0.5f; 
+    [SerializeField] private float oxygenDepletionRate = 0.5f;
+
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float currentHealth;
+
+    public Image oxygenRingUI;
+
 
     // references
     private Rigidbody2D rb;
@@ -32,7 +38,11 @@ public class subScript : MonoBehaviour
 
         // Initialize oxygen
         currentOxygen = maxOxygen;
+        currentHealth = maxHealth;
+
         lightningPulse = GetComponent<WeaponSystem>();
+
+        UpdateOxygenUI();
 
     }
 
@@ -111,6 +121,8 @@ public class subScript : MonoBehaviour
         currentOxygen += amount;
         currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);
 
+        UpdateOxygenUI();
+
         if (currentOxygen <= 0)
         {
             // handle out of oxygen 
@@ -124,6 +136,37 @@ public class subScript : MonoBehaviour
     public void RefillOxygen()
     {
         currentOxygen = maxOxygen;
+        UpdateOxygenUI();
         Debug.Log("Oxygen refilled.");
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Debug.Log($"Hull Hit! Health: {currentHealth}/{maxHealth}");
+
+        // Check for Hull Failure
+        if (currentHealth <= 0)
+        {
+            Debug.Log("GAME OVER - HULL DESTROYED");
+            Destroy(gameObject); // Optional: Replace with Game Over screen logic
+        }
+    }
+
+
+    // New Helper Function to handle the UI
+    private void UpdateOxygenUI()
+    {
+        if (oxygenRingUI != null)
+        {
+            // Converts current oxygen to a 0.0 to 1.0 percentage
+            oxygenRingUI.fillAmount = currentOxygen / maxOxygen;
+
+            // Optional: Change color to red if low
+            if (currentOxygen < 30)
+                oxygenRingUI.color = Color.red;
+            else
+                oxygenRingUI.color = Color.white;
+        }
     }
 }
