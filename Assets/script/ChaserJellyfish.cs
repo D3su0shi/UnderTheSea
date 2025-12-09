@@ -59,6 +59,9 @@ public class ChaserJellyfish : HostileFish
         // Move towards player
         transform.position = Vector2.MoveTowards(transform.position, submarineReference.transform.position, chaseSpeed * dt);
 
+        // Face the player
+        RotateTowards(submarineReference.transform.position);
+
         // Try to attack if close enough
         float dist = Vector2.Distance(transform.position, submarineReference.transform.position);
         if (dist < 1.5f && CanAttack()) // 1.5f is contact range
@@ -75,6 +78,7 @@ public class ChaserJellyfish : HostileFish
         transform.position = Vector2.MoveTowards(transform.position, targetNode.transform.position, patrolSpeed * dt);
 
         // Face the node
+        RotateTowards(targetNode.transform.position);
 
         // Check arrival
         if (Vector2.Distance(transform.position, targetNode.transform.position) < arrivalThreshold)
@@ -84,7 +88,16 @@ public class ChaserJellyfish : HostileFish
         }
     }
 
-   
+    private void RotateTowards(Vector3 target)
+    {
+        Vector2 dir = target - transform.position;
+        if (dir != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
