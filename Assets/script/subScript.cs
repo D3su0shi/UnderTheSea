@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI; 
 
@@ -12,7 +13,7 @@ public class subScript : MonoBehaviour
 
     // oxygen stats
     private float maxOxygen = 100f;
-    [SerializeField] public float currentOxygen;
+    [SerializeField] private float currentOxygen;
     [SerializeField] private float oxygenDepletionRate = 0.5f;
 
     [SerializeField] private float maxHealth = 100f;

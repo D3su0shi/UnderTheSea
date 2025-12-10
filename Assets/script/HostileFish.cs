@@ -2,12 +2,12 @@ using UnityEngine;
 
 public abstract class HostileFish : MonoBehaviour
 {
-    [SerializeField] public int maxHits = 3;
+    [SerializeField] protected int maxHits = 3;
     [SerializeField] protected float stunDuration = 1.0f;
     [SerializeField] protected float detectionRange = 8f;
     [SerializeField] protected float attackCooldown = 2.0f;
 
-    [SerializeField] public int currentHits = 0;
+    [SerializeField] protected int currentHits = 0;
     [SerializeField] protected bool isStunned = false;
     [SerializeField] protected bool isAttackReady = true; 
 

@@ -15,7 +15,7 @@ public class TimerSystem : MonoBehaviour
         public Action Callback; //function to call when the timer finishes
     }
 
-    [SerializeField] public List<TimerEvent> activeTimers = new List<TimerEvent>();
+    [SerializeField] private List<TimerEvent> activeTimers = new List<TimerEvent>();
     
     void Awake()
     {
