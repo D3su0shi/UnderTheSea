@@ -24,7 +24,7 @@ public class subScript : MonoBehaviour
 
     // references
     private Rigidbody2D rb;
-    public WeaponSystem lightningPulse;
+    WeaponSystem lightningPulse;
 
 
     void Start()
