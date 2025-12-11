@@ -13,6 +13,12 @@ public class Turtle : MonoBehaviour
     {
         // specific ID so if you have multiple turtles, their timers don't conflict
         timerID = "TurtleRescue_" + gameObject.GetInstanceID();
+
+        // Optional: Auto-find ship if you forgot to drag it in
+        if (ship == null)
+        {
+            ship = FindFirstObjectByType<subScript>();
+        }
     }
 
     void Update()
@@ -47,18 +53,21 @@ public class Turtle : MonoBehaviour
     {
         isBeingRescued = true;
 
-        // Calls your existing TimerSystem
-        TimerSystem.Instance.AddTimer(timerID, rescueTimeDuration, CompleteRescue);
-
-        Debug.Log("Turtle rescue started...");
+        if (TimerSystem.Instance != null)
+        {
+            TimerSystem.Instance.AddTimer(timerID, rescueTimeDuration, CompleteRescue);
+            Debug.Log("Turtle rescue started...");
+        }
     }
 
     private void CancelRescue()
     {
         isBeingRescued = false;
 
-        // Cancels the specific timer for this turtle
-        TimerSystem.Instance.CancelTimer(timerID);
+        if (TimerSystem.Instance != null)
+        {
+            TimerSystem.Instance.CancelTimer(timerID);
+        }
 
         Debug.Log("Rescue cancelled (Ship moved or left zone).");
     }
@@ -68,12 +77,23 @@ public class Turtle : MonoBehaviour
         isBeingRescued = false;
 
         // Cleanup the timer just in case
-        TimerSystem.Instance.CancelTimer(timerID);
+        if (TimerSystem.Instance != null)
+        {
+            TimerSystem.Instance.CancelTimer(timerID);
+        }
 
         Debug.Log("Turtle rescue complete!");
 
-        // TODO: Add points here if you have a GameManager
-        // GameManager.Instance.AddScore(100);
+        // --- NEW: UPDATE STATS ---
+        if (GameStatsManager.Instance != null)
+        {
+            // This increments the count AND updates the Total Score automatically
+            GameStatsManager.Instance.AddStat("TurtlesRescued", 1);
+        }
+        else
+        {
+            Debug.LogWarning("GameStatsManager is missing! Score not updated.");
+        }
 
         // Remove the turtle from the game
         Destroy(gameObject);

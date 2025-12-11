@@ -1,13 +1,12 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class subScript : MonoBehaviour
 {
     // movement
     [SerializeField] private float moveSpeed = 7f;        // how fast the sub moves
     private float rotationSpeed = 90f;  // how fast the sub rotates
-
 
     [SerializeField] private Vector2 velocity;
 
@@ -21,11 +20,9 @@ public class subScript : MonoBehaviour
 
     public Image oxygenRingUI;
 
-
     // references
     private Rigidbody2D rb;
     WeaponSystem lightningPulse;
-
 
     void Start()
     {
@@ -43,12 +40,10 @@ public class subScript : MonoBehaviour
         lightningPulse = GetComponent<WeaponSystem>();
 
         UpdateOxygenUI();
-
     }
 
     void Update()
     {
-       
         // firing weapons (spacebar)  
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -57,29 +52,25 @@ public class subScript : MonoBehaviour
                 lightningPulse.Attack();
             }
         }
-
     }
+
     void FixedUpdate()
     {
-        
         // oxygen depletion
         float dt = Time.deltaTime;
 
-         if (rb != null)
+        if (rb != null)
         {
             velocity = rb.linearVelocity;
         }
 
-        
         HandleMovement();
 
         UpdateOxygen(-oxygenDepletionRate * dt);
-
     }
 
     public void HandleMovement()
     {
-
         // movement input
         // --- Rotation (A/D or arrows) ---
         float turn = Input.GetAxis("Horizontal");
@@ -106,7 +97,6 @@ public class subScript : MonoBehaviour
             // Stop instantly
             rb.linearVelocity = Vector2.zero;
         }
-
     }
 
     // check if sub is stationary
@@ -125,10 +115,8 @@ public class subScript : MonoBehaviour
 
         if (currentOxygen <= 0)
         {
-            // handle out of oxygen 
-            Debug.Log("Oxygen depleted. Game Over!");
-            
-            // to do: trigger game over sequence
+            // CALL THE DIE METHOD HERE
+            Die("Suffocated");
         }
     }
 
@@ -148,11 +136,28 @@ public class subScript : MonoBehaviour
         // Check for Hull Failure
         if (currentHealth <= 0)
         {
-            Debug.Log("GAME OVER - HULL DESTROYED");
-            Destroy(gameObject); // Optional: Replace with Game Over screen logic
+            // CALL THE DIE METHOD HERE INSTEAD OF DESTROY
+            Die("Hull Destroyed");
         }
     }
 
+    // --- NEW: Die Method to trigger Game Over Scene ---
+    private void Die(string cause)
+    {
+        Debug.Log($"GAME OVER: {cause}");
+
+        // Notify the Manager to load the Game Over Scene
+        if (GameStatsManager.Instance != null)
+        {
+            GameStatsManager.Instance.TriggerLoss();
+        }
+        else
+        {
+            Debug.LogError("No GameStatsManager found! Cannot load Game Over scene.");
+            // Fallback: Just destroy ship if manager is missing
+            Destroy(gameObject);
+        }
+    }
 
     // New Helper Function to handle the UI
     private void UpdateOxygenUI()
