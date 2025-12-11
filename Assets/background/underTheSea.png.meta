@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c017d780010835e48894a9258bb93a1e
+guid: bb8c8cbcc129ec04fb961ea0ea365297
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6586461156150141773
-    second: diamond_0
+      213: 4348915966253915054
+    second: underTheSea_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: diamond_0
+      name: underTheSea_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 768
+        width: 1536
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d43ec33668fc76b50800000000000000
-      internalID: 6586461156150141773
+      spriteID: eabd69e97047a5c30800000000000000
+      internalID: 4348915966253915054
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      diamond_0: 6586461156150141773
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

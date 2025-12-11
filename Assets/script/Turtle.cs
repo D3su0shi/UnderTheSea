@@ -2,43 +2,41 @@ using UnityEngine;
 
 public class Turtle : MonoBehaviour
 {
-    [SerializeField] private float rescueZoneRadius; //circular radius the ship must enter to rescue turtle
-    [SerializeField] private float rescueTimeDuration; //time taken to rescue turtle
-    //[SerializeField] private int pointsForRescue = 100; //points awarded for rescuing turtle
+    [SerializeField] private float rescueZoneRadius = 3f; // Distance ship must be within
+    [SerializeField] private float rescueTimeDuration = 5f; // Time required to rescue
+    [SerializeField] private bool isBeingRescued = false; // Debug flag to see status in Inspector
 
-    [SerializeField] private bool isBeingRescued = false; //flag to check if rescue is in progress
-
-    public subScript ship; //reference to the ship
-   // public GameManager gameManager; //reference to game manager
-
-   private string timerID; //unique ID for this instance's timer
+    public subScript ship; // DRAG YOUR SUBMARINE HERE
+    private string timerID; // Unique ID for this turtle's timer
 
     void Start()
     {
-        timerID = "TurtleRescue_" + gameObject.GetInstanceID(); // create unique timer ID for this turtle instance
-
+        // specific ID so if you have multiple turtles, their timers don't conflict
+        timerID = "TurtleRescue_" + gameObject.GetInstanceID();
     }
 
     void Update()
     {
-        if (ship == null) return; // if ship reference is missing, exit
+        if (ship == null) return;
 
-        float distanceToShip = Vector2.Distance(transform.position, ship.transform.position); // calculate distance to ship
+        // 1. Calculate Distance
+        float distanceToShip = Vector2.Distance(transform.position, ship.transform.position);
 
-        bool canRescue = (distanceToShip <= rescueZoneRadius && ship.isStationary()); // check if ship is in rescue zone and stationary
+        // 2. Check Conditions: Inside radius AND Ship is stationary
+        bool canRescue = (distanceToShip <= rescueZoneRadius && ship.isStationary());
 
         if (canRescue)
         {
-            if(!isBeingRescued) // start rescue if not already in progress
+            // If we are in range/stopped, and not yet rescuing, START the timer
+            if (!isBeingRescued)
             {
                 StartRescue();
             }
-
-            // to do: update UI
         }
         else
         {
-            if (isBeingRescued) // cancel rescue if ship leaves rescue zone or starts moving
+            // If we move out of range or start moving, STOP the timer
+            if (isBeingRescued)
             {
                 CancelRescue();
             }
@@ -48,29 +46,43 @@ public class Turtle : MonoBehaviour
     private void StartRescue()
     {
         isBeingRescued = true;
-        TimerSystem.Instance.AddTimer(timerID, rescueTimeDuration, CompleteRescue); // start timer for rescue
 
-        Debug.Log("Turtle rescue started.");
+        // Calls your existing TimerSystem
+        TimerSystem.Instance.AddTimer(timerID, rescueTimeDuration, CompleteRescue);
+
+        Debug.Log("Turtle rescue started...");
     }
 
     private void CancelRescue()
     {
         isBeingRescued = false;
-        TimerSystem.Instance.CancelTimer(timerID); // ensure timer is cancelled
-       
-        Debug.Log("Moved out of zone, rescue cancelled.");
-    }
 
+        // Cancels the specific timer for this turtle
+        TimerSystem.Instance.CancelTimer(timerID);
+
+        Debug.Log("Rescue cancelled (Ship moved or left zone).");
+    }
 
     public void CompleteRescue()
     {
         isBeingRescued = false;
 
-        // to do: add points to player score in GameManager
+        // Cleanup the timer just in case
+        TimerSystem.Instance.CancelTimer(timerID);
 
-        TimerSystem.Instance.CancelTimer(timerID); // clean up timer
-        Destroy(gameObject); // remove turtle from scene
+        Debug.Log("Turtle rescue complete!");
 
-        Debug.Log("Turtle rescue complete.");
+        // TODO: Add points here if you have a GameManager
+        // GameManager.Instance.AddScore(100);
+
+        // Remove the turtle from the game
+        Destroy(gameObject);
+    }
+
+    // OPTIONAL: Draws a yellow circle in the Scene view so you can see the radius
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, rescueZoneRadius);
     }
 }

@@ -4,7 +4,7 @@ public class ChaserJellyfish : HostileFish
 {
     public GraphNode currentGraphNode; // Starting node
     public float patrolSpeed = 2f;
-    public float chaseSpeed = 6f;
+    public float chaseSpeed = 4f;
     public float arrivalThreshold = 0.5f;
 
     // Internal navigation state
@@ -56,15 +56,15 @@ public class ChaserJellyfish : HostileFish
 
     private void PerformChase(float dt)
     {
-        // Move towards player
-        transform.position = Vector2.MoveTowards(transform.position, submarineReference.transform.position, chaseSpeed * dt);
+        // 1. Calculate the new 2D position
+        Vector2 newPos = Vector2.MoveTowards(transform.position, submarineReference.transform.position, chaseSpeed * dt);
 
-        // Face the player
-        RotateTowards(submarineReference.transform.position);
+        // 2. Assign back to transform.position, preserving the current Z
+        transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
 
         // Try to attack if close enough
         float dist = Vector2.Distance(transform.position, submarineReference.transform.position);
-        if (dist < 1.5f && CanAttack()) // 1.5f is contact range
+        if (dist < 1.5f && CanAttack())
         {
             Attack();
         }
@@ -74,27 +74,17 @@ public class ChaserJellyfish : HostileFish
     {
         if (targetNode == null) return;
 
-        // Move towards graph node
-        transform.position = Vector2.MoveTowards(transform.position, targetNode.transform.position, patrolSpeed * dt);
+        // 1. Calculate the new 2D position
+        Vector2 newPos = Vector2.MoveTowards(transform.position, targetNode.transform.position, patrolSpeed * dt);
 
-        // Face the node
-        RotateTowards(targetNode.transform.position);
+        // 2. Assign back to transform.position, preserving the current Z
+        transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
 
-        // Check arrival
+
+        // Check arrival (using Vector2.Distance ignores Z difference, which is good)
         if (Vector2.Distance(transform.position, targetNode.transform.position) < arrivalThreshold)
         {
-            // Pick next random neighbor from the Adjacency List
             targetNode = targetNode.GetRandomNeighbor();
-        }
-    }
-
-    private void RotateTowards(Vector3 target)
-    {
-        Vector2 dir = target - transform.position;
-        if (dir != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 

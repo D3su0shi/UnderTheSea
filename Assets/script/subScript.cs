@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class subScript : MonoBehaviour
 {
     // movement
-    private float moveSpeed = 7f;        // how fast the sub moves
+    [SerializeField] private float moveSpeed = 7f;        // how fast the sub moves
     private float rotationSpeed = 90f;  // how fast the sub rotates
 
 
