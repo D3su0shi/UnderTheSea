@@ -113,9 +113,10 @@ public class subScript : MonoBehaviour
 
         UpdateOxygenUI();
 
+        // This checks if Oxygen has run out
         if (currentOxygen <= 0)
         {
-            // CALL THE DIE METHOD HERE
+            // Trigger the Game Over sequence
             Die("Suffocated");
         }
     }
@@ -141,7 +142,7 @@ public class subScript : MonoBehaviour
         }
     }
 
-    // --- NEW: Die Method to trigger Game Over Scene ---
+    // --- Die Method to trigger Game Over Scene ---
     private void Die(string cause)
     {
         Debug.Log($"GAME OVER: {cause}");

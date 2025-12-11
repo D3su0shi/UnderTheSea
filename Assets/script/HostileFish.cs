@@ -2,14 +2,16 @@ using UnityEngine;
 
 public abstract class HostileFish : MonoBehaviour
 {
+    [Header("Stats")]
     [SerializeField] protected int maxHits = 3;
     [SerializeField] protected float stunDuration = 1.0f;
     [SerializeField] protected float detectionRange = 8f;
     [SerializeField] protected float attackCooldown = 2.0f;
 
+    [Header("State (Read Only)")]
     [SerializeField] protected int currentHits = 0;
     [SerializeField] protected bool isStunned = false;
-    [SerializeField] protected bool isAttackReady = true; 
+    [SerializeField] protected bool isAttackReady = true;
 
     // Internal Timer IDs for the TimerSystem
     protected string stunTimerID;
@@ -17,6 +19,7 @@ public abstract class HostileFish : MonoBehaviour
 
     // References
     protected subScript submarineReference;
+    protected Rigidbody2D rb; // <--- ADDED PHYSICS REFERENCE
 
     protected virtual void Start()
     {
@@ -27,6 +30,17 @@ public abstract class HostileFish : MonoBehaviour
         submarineReference = FindFirstObjectByType<subScript>();
         if (submarineReference == null)
             Debug.LogError("HostileFish: No 'subScript' found in scene!");
+
+        // --- PHYSICS SETUP ---
+        rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.freezeRotation = true; // Prevent spinning like a ball
+        }
+        else
+        {
+            Debug.LogError("HostileFish: Missing Rigidbody2D component!");
+        }
     }
 
     protected virtual void OnDestroy()
@@ -38,11 +52,20 @@ public abstract class HostileFish : MonoBehaviour
         }
     }
 
-    protected void Update()
+    // CHANGED TO FIXEDUPDATE FOR PHYSICS STABILITY
+    protected void FixedUpdate()
     {
+        // 1. Kill "Push" Momentum
+        // This prevents the fish from sliding/bouncing if the player hits it
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
 
-        if (isStunned) return; 
-        UpdateAI(Time.deltaTime);
+        if (isStunned) return;
+
+        // 2. Run AI Logic
+        UpdateAI(Time.fixedDeltaTime);
     }
 
     public void TakeHit()
@@ -76,12 +99,17 @@ public abstract class HostileFish : MonoBehaviour
         {
             // Callback when time is up:
             isStunned = false;
-            // Optional: Add visual code here to return color to normal
         });
     }
 
     protected virtual void Die()
     {
+        // --- UPDATED: STATS INTEGRATION ---
+        if (GameStatsManager.Instance != null)
+        {
+            GameStatsManager.Instance.AddStat("EnemiesDefeated", 1);
+        }
+
         Destroy(gameObject);
     }
 
@@ -107,8 +135,6 @@ public abstract class HostileFish : MonoBehaviour
             // 2. Start Cooldown using TimerSystem
             isAttackReady = false;
 
-            // Note: We don't need to cancel previous attack timers because 
-            // we wouldn't be here if isAttackReady was false.
             TimerSystem.Instance.AddTimer(attackTimerID, attackCooldown, () =>
             {
                 isAttackReady = true;
